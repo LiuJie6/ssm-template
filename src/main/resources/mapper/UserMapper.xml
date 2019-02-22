@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+    <resultMap id="UserResultMap" type="com.lj.ssm.model.test.UserModel">
+        <id property="userId" column="a_user_id"/>
+        <result property="userName" column="a_user_name"/>
+        <!--一对一关系-->
+        <association property="myCard" javaType="com.lj.ssm.model.test.CardModel">
+            <id property="cardId" column="b_card_id"/>
+            <result property="cardName" column="b_card_name"/>
+        </association>
+        <!--一对多关系-->
+        <collection property="myBankCards" javaType="com.lj.ssm.model.test.BankModel">
+            <id property="bankCardId" column="c_bank_card_id"/>
+            <result property="bankCardName" column="c_bank_card_name"/>
+        </collection>
+    </resultMap>
+
+    <!--<insert id="insertUser" parameterType="UserModel">
+        INSERT INTO user(user_name,password,email,card_id,)
+    </insert>-->
+</mapper>
